@@ -18,10 +18,15 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #f0f0f5;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pagination-container .previous,
+.pagination-container .next {
+  margin-left: 10px;
 }

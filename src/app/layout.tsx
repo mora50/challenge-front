@@ -1,7 +1,8 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import { Saira } from 'next/font/google'
+import GraphQlProvider from '@/contexts/apolloProvider'
+import { Header } from '@/components'
+const saira = Saira({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,7 +16,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <GraphQlProvider>
+        <body
+          className={`${saira.className} text-dark`}
+          suppressHydrationWarning={true}
+        >
+          <Header />
+
+          <main className="py-8 container mx-auto px-4">{children}</main>
+        </body>
+      </GraphQlProvider>
     </html>
   )
 }

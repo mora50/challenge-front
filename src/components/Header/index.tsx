@@ -1,5 +1,6 @@
 import { Saira_Stencil_One } from 'next/font/google'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const sairaStencilOne = Saira_Stencil_One({
   weight: '400',
@@ -12,13 +13,15 @@ export function Header() {
   return (
     <>
       <header className="bg-white">
-        <div className="container mx-auto grid md:flex py-2 px-4 md:p-0  items-center md:h-20">
-          <h1
+        <div className="container mx-auto grid md:flex py-2 px-4  md:px-4  items-center md:h-20">
+          <Link
+            href="/"
             className={`${sairaStencilOne.className} text-dark-grey  text-4xl flex-none md:flex-1`}
           >
-            capputeeno
-          </h1>
-
+            <span className="text-dark-grey  text-4xl flex-none md:flex-1">
+              capputeeno
+            </span>
+          </Link>
           <div className="md:order-3 text-right">
             <button className="ml-8 relative ">
               <span
@@ -27,7 +30,7 @@ export function Header() {
               />
 
               <Image
-                src={'assets/icons/shopping-bag-icon.svg'}
+                src={'/assets/icons/shopping-bag-icon.svg'}
                 alt="Search icon"
                 width={20}
                 height={20}
@@ -43,7 +46,7 @@ export function Header() {
             />
             <button className="bg-gray-light text-black h-11 px-4 rounded-e-lg">
               <Image
-                src={'assets/icons/search-icon.svg'}
+                src={'/assets/icons/search-icon.svg'}
                 alt="Search icon"
                 width={20}
                 height={20}

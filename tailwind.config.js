@@ -32,6 +32,8 @@ module.exports = {
       orange: '#FFA585',
       light: '#E9E9F0',
       dark: '#41414D',
+      'blue-gray': '#617480',
+      'brand-blue': '#115D8C',
     },
     theme: {
       extend: {

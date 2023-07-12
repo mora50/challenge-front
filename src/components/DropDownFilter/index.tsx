@@ -36,16 +36,40 @@ export const DropDownFilters = ({ changeFilter }: DropDownFiltersProps) => {
     const sortOptions: { [keyof: string]: {} } = {
       DESC: {
         sortField: 'price_in_cents',
-        sortOrder: 'price_in_cents',
+        sortOrder: 'DESC',
+      },
+      ASC: {
+        sortField: 'price_in_cents',
+        sortOrder: 'ASC',
+      },
+      SALES: {
+        sortField: 'sales',
+        sortOrder: 'DESC',
       },
     }
 
-    const value = type ? sortOptions[type!] : { sortField: 'price_in_cents' }
-
-    console.log(value)
+    const value = sortOptions[type!] ?? {}
 
     changeFilter(value)
   }
+
+  const options = [
+    {
+      label: 'Novidades',
+    },
+    {
+      label: 'Preço: Maior - menor',
+      value: 'DESC',
+    },
+    {
+      label: 'Preço: Menor - maior',
+      value: 'ASC',
+    },
+    {
+      label: 'Mais vendidos',
+      value: 'SALES',
+    },
+  ]
 
   return (
     <div className="relative text-dark-grey " ref={dropdownRef}>
@@ -66,18 +90,15 @@ export const DropDownFilters = ({ changeFilter }: DropDownFiltersProps) => {
       {isOpen && (
         <div className="absolute top-7  right-0 mt-2 w-48 bg-white  rounded-md shadow-lg">
           <ul className="py-2">
-            <button className="px-4 py-2" onClick={() => onClickSort()}>
-              <li>Novidades</li>
-            </button>
-            <button className="px-4 py-2" onClick={() => onClickSort('DESC')}>
-              <li>Preço: Maior - menor</li>
-            </button>
-            <button className="px-4 py-2" onClick={() => onClickSort()}>
-              <li>Preço: Menor - maior</li>
-            </button>
-            <button className="px-4 py-2" onClick={() => onClickSort()}>
-              <li>Mais vendidos</li>
-            </button>
+            {options.map((option) => (
+              <button
+                key={option.value}
+                className="px-4 py-2"
+                onClick={() => onClickSort(option.value)}
+              >
+                <li>{option.label}</li>
+              </button>
+            ))}
           </ul>
         </div>
       )}

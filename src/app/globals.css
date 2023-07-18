@@ -30,3 +30,21 @@ body {
 .pagination-container .next {
   margin-left: 10px;
 }
+
+.custom-select::before {
+  content: '';
+  position: absolute;
+  top: 32%;
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  border: solid #737380;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  border-radius: 1px;
+}
+
+.custom-select {
+  position: relative;
+  width: fit-content;
+}

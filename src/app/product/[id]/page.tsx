@@ -1,6 +1,7 @@
 'use client'
 import { Skeleton } from '@/components'
 import IconBag from '@/components/icons/bag-icon'
+import { useCartContext } from '@/contexts'
 import { GET_PRODUCT } from '@/graphql'
 import { Product } from '@/types/products'
 import { toBRLcurrencyFormat } from '@/utils/formatBRLcurrency'
@@ -9,6 +10,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default function ProductPage({ params }: { params: { id: string } }) {
+  const { addToCart } = useCartContext()
+
   const { loading, error, data } = useQuery<{ product: Product }>(GET_PRODUCT, {
     variables: {
       id: params.id,
@@ -53,6 +56,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               alt={product.name}
               height={580}
               width={640}
+              priority
             />
 
             <div className="flex flex-col justify-between">
@@ -74,7 +78,10 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 <p className="text-sm">{product.description}</p>
               </div>
 
-              <button className="bg-brand-blue flex w-full items-center justify-center h-11 py-3 text-white rounded gap-3">
+              <button
+                onClick={() => addToCart({ ...product, quantity: 1 })}
+                className="bg-brand-blue flex w-full items-center justify-center h-11 py-3 text-white rounded gap-3"
+              >
                 <IconBag color="#fff" />
                 ADICIONAR AO CARRINHO
               </button>

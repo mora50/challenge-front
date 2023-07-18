@@ -1,3 +1,5 @@
+'use client'
+import { useCartContext } from '@/contexts'
 import { Saira_Stencil_One } from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,6 +12,8 @@ const sairaStencilOne = Saira_Stencil_One({
 })
 
 export function Header() {
+  const { cart } = useCartContext()
+
   return (
     <>
       <header className="bg-white">
@@ -23,19 +27,18 @@ export function Header() {
             </span>
           </Link>
           <div className="md:order-3 text-right">
-            <button className="ml-8 relative ">
+            <Link href="/cart" className="ml-8 relative flex">
               <span
-                className="text-white after:-bottom-2.5 after:-right-2  after:content-[attr(data-count)] after:absolute after:bg-red after:w-4 after:h-4 after:text-[10px] after:rounded-full"
-                data-count="8"
+                data-count={cart?.length || 0}
+                className="text-white after:-bottom-2.5 after:-right-2 after:flex after:justify-center after:content-[attr(data-count)] after:absolute after:bg-red after:w-4 after:h-4 after:text-[10px] after:rounded-full"
               />
-
               <Image
                 src={'/assets/icons/shopping-bag-icon.svg'}
                 alt="Search icon"
                 width={20}
                 height={20}
               />
-            </button>
+            </Link>
           </div>
 
           <div className="col-span-2  md:order-2 flex mt-4 md:mt-0">

@@ -26,6 +26,7 @@ export const GET_PRODUCTS = gql`
 export const GET_PRODUCT = gql`
   query GetProduct($id: ID!) {
     product: Product(id: $id) {
+      id
       name
       description
       image_url

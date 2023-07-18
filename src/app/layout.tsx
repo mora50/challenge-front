@@ -1,4 +1,6 @@
+
 import { Header } from '@/components'
+import { CartProvider } from '@/contexts'
 import GraphQlProvider from '@/contexts/apolloProvider'
 import { Saira } from 'next/font/google'
 import './globals.css'
@@ -21,9 +23,11 @@ export default function RootLayout({
           className={`${saira.className} text-dark`}
           suppressHydrationWarning={true}
         >
-          <Header />
+          <CartProvider>
+            <Header />
 
-          <main className="py-8 container mx-auto px-4">{children}</main>
+            <main className="py-8 container mx-auto px-4">{children}</main>
+          </CartProvider>
         </body>
       </GraphQlProvider>
     </html>

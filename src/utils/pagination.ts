@@ -1,4 +1,4 @@
-function listItems(items: any, pageActual: number, limitItems: number) {
+export function listItems(items: any, pageActual: number, limitItems: number) {
   let result = []
   let totalPage = Math.ceil(items.length / limitItems)
   let count = pageActual * limitItems - limitItems

@@ -23,12 +23,16 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   return (
     <section>
       <header className="mb-6">
-        <Link className="flex gap-2 items-center text-blue-gray" href="/">
+        <Link
+          passHref
+          className="flex gap-2 items-center text-blue-gray"
+          href="/"
+        >
           <Image
             src="/assets/icons/backward-icon.svg"
             width={24}
             height={24}
-            alt="back button"
+            alt="Voltar para a página inicial"
           />
           Voltar
         </Link>
@@ -37,15 +41,30 @@ export default function ProductPage({ params }: { params: { id: string } }) {
       <div className="grid grid-cols-2 gap-8">
         {loading && (
           <>
-            <Skeleton className="h-[580px]" />
+            <Skeleton
+              className="h-[580px]"
+              aria-label="Loading product image"
+            />
 
             <div>
-              <Skeleton className="h-6 w-36 flex" />
-              <Skeleton className="h-9 flex my-3" />
+              <Skeleton
+                className="h-6 w-36 flex"
+                aria-label="Loading product image"
+              />
+              <Skeleton
+                className="h-9 flex my-3"
+                aria-label="Loading product image"
+              />
 
-              <Skeleton className="h-11  w-52" />
+              <Skeleton
+                className="h-11  w-52"
+                aria-label="Loading product image"
+              />
 
-              <Skeleton className="h-5  flex mt-6" />
+              <Skeleton
+                className="h-5  flex mt-6"
+                aria-label="Loading product image"
+              />
             </div>
           </>
         )}
@@ -63,7 +82,12 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               <div>
                 <h3 className="capitalize">{product.category}</h3>
 
-                <h1 className="my-3 text-3xl font-light">{product.name}</h1>
+                <h1
+                  className="my-3 text-3xl font-light"
+                  aria-label={product.name}
+                >
+                  {product.name}
+                </h1>
 
                 <span className="text-xl font-medium text-black">
                   {toBRLcurrencyFormat(product.price_in_cents)}
@@ -79,6 +103,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               </div>
 
               <button
+                aria-label="Adicionar produto ao carrinho"
                 onClick={() => addToCart({ ...product, quantity: 1 })}
                 className="bg-brand-blue flex w-full items-center justify-center h-11 py-3 text-white rounded gap-3"
               >

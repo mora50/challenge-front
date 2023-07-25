@@ -27,14 +27,19 @@ export function Header() {
             </span>
           </Link>
           <div className="md:order-3 text-right">
-            <Link href="/cart" className="ml-8 relative flex">
+            <Link
+              passHref
+              href="/cart"
+              className="ml-8 relative flex"
+              aria-label="Abrir carrinho"
+            >
               <span
                 data-count={cart?.length || 0}
                 className="text-white after:-bottom-2.5 after:-right-2 after:flex after:justify-center after:content-[attr(data-count)] after:absolute after:bg-red after:w-4 after:h-4 after:text-[10px] after:rounded-full"
               />
               <Image
                 src={'/assets/icons/shopping-bag-icon.svg'}
-                alt="Search icon"
+                alt="ícone do carrinho"
                 width={20}
                 height={20}
               />
